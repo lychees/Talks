@@ -6,10 +6,12 @@
 
 ## Presented
 
+按演讲日期倒序排列。
+
 | 日期 | 活动 | 演讲 | 资料 |
 | --- | --- | --- | --- |
 | 2026.10.23 | Unreal Fest 2026 | **眩晕瘫坐？一句话生成 3A 游戏：哪些是真的哪些是假的**<br>Feihu Tang · Moonshot AI | [幻灯片源码](packages/2026-10-23-unreal-fest-one-prompt-3a-games/slides.md) · [完整视频（bilibili）](https://www.bilibili.com/video/BV1xtnY6REby/) |
-| 2026.10 | GOSIM Shenzhen | **GOSIM Shenzhen 2026** | [Google Slides](https://docs.google.com/presentation/d/1ZbJXLxvCHTbNorHw-DN89hVl5xzKgrcs_1YY2ZerD08/edit?usp=sharing) · [完整视频（bilibili）](https://www.bilibili.com/video/BV1qYnL6tEiv) |
+| 2026.10.16 | GOSIM Shenzhen | **GOSIM Shenzhen 2026** | [Google Slides](https://docs.google.com/presentation/d/1ZbJXLxvCHTbNorHw-DN89hVl5xzKgrcs_1YY2ZerD08/edit?usp=sharing) · [原始 PPTX](https://docs.google.com/presentation/d/1ZbJXLxvCHTbNorHw-DN89hVl5xzKgrcs_1YY2ZerD08/export/pptx?usp=sharing) · [完整视频（bilibili）](https://www.bilibili.com/video/BV1qYnL6tEiv) |
 
 ## 本地运行
 
