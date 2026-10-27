@@ -6,7 +6,7 @@
 
 ## Presented
 
-按演讲时间倒序排列；时段均为北京时间（UTC+8）。
+按档案时间倒序排列；早期记录使用明确标注的录像发布日期。时段均为北京时间（UTC+8）。
 
 | 时间 | 活动 | 演讲 | 资料 |
 | --- | --- | --- | --- |
@@ -18,6 +18,8 @@
 | 2026.04.17 · 15:10–15:55 | SITS 2026 奇点智能技术大会 | **线性注意力：过去、现在与未来**<br>唐飞虎 · Moonshot AI | [Google Slides](https://docs.google.com/presentation/d/17ppH3Sc9c90x9d41hyhjEZhKelmY62FmzaVIXGlWyEs/edit?usp=sharing) · [原始 PPTX](https://github.com/lychees/Talks/blob/main/slides/%E7%BA%BF%E6%80%A7%E6%B3%A8%E6%84%8F%E5%8A%9B_%E8%BF%87%E5%8E%BB_%E7%8E%B0%E5%9C%A8_%E4%B8%8E%E6%9C%AA%E6%9D%A5.pptx) · [完整视频（bilibili）](https://www.bilibili.com/video/BV1xtouB5Ed7/) · [活动官网](https://ml-summit.org/beijing202604) · [相关报道](https://view.inews.qq.com/a/20260418A060WT00) |
 | 2026.03.14 · 15:25–16:05 | 上海 OpenBuild × Startup Grind OpenClaw Day | **从龙虾自由到活学活用的 X 种姿势（圆桌讨论）**<br>OpenBuild × Startup Grind | [圆桌视频（bilibili）](https://www.bilibili.com/video/BV1k4wfzdEqc) · [活动官网](https://luma.com/n0lzkvwz) · [相关报道](https://createwith.com/event/openclaw-day-shanghai-hands-on-workshops-project-demos-devel-mar-2026)（无 Slide） |
 | 2025.11.23 · 15:50 | 第十四届 TOP100 全球软件案例研究峰会 | **从 Claude Code 看 AI startup 的 dogfood 文化**<br>唐飞虎 · Moonshot AI | [Google Slides](https://docs.google.com/presentation/d/1XD9jzKwu2UY-dyG-4CbKPIJLgRXndV3h90PEyePc8oU/edit?usp=sharing) · [原始 PPTX](https://github.com/lychees/Talks/blob/main/slides/%E4%BB%8E_Claude_Code_%E7%9C%8B_AI_startup_%E7%9A%84_dogfood_%E6%96%87%E5%8C%96.pptx) · [完整视频（bilibili）](https://www.bilibili.com/video/BV1xkXoBvEjb) · [活动官网](https://www.top100summit.com/detail?id=18952) · [相关报道](https://m.c114.com.cn/w15-1300671.html) |
+| 2017.08.09 · 录像发布；活动日期待确认 | Taipei Ethereum Meetup #2017-6 | **算力套汇的可行性研究**<br>唐飞虎 | [YouTube 指定片段](https://youtu.be/-iXqJhSdVp0?t=6201) · [B 站第 3 部分](https://www.bilibili.com/video/av13132046/#page=3) · [活动频道](https://www.youtube.com/@taipeieth) · [原始收录](https://www.shuizilong.com/house/about-me)（未提供 Slide） |
+| 2015.02.05 · 录像发布；活动日期待确认 | 2048 Survivor · 游戏演示 | **2048 Survivor：玩法介绍与演示**<br>唐飞虎 | [B 站演示与问答](https://www.bilibili.com/video/BV1Vx411A7S8/) · [项目仓库](https://github.com/lychees/2048-Survivor) · [原始收录](https://www.shuizilong.com/house/about-me)（未提供 Slide） |
 
 ## 本地运行
 
