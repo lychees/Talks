@@ -25,11 +25,13 @@ pnpm dev
 pnpm build
 ```
 
-生成适用于 `/Talks/` 路径的静态网站：
+生成适用于 `/Talks/` 路径的完整 GitHub Pages 网站（含演讲索引首页）：
 
 ```bash
 pnpm build-base
 ```
+
+GitHub Pages 首页：<https://lychees.github.io/Talks/>。推送到 `main` 后由 GitHub Actions 自动部署。
 
 幻灯片位于 `packages/2026-10-23-unreal-fest-one-prompt-3a-games/`。页面图像保留了原始 PowerPoint 的版式，8 段嵌入演示视频可在对应页面直接播放；完整演讲录像见 [B 站](https://www.bilibili.com/video/BV1xtnY6REby/)。
 

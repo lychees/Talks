@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "pnpm --filter @lychees/unreal-fest-2026 dev",
     "build": "pnpm --filter @lychees/unreal-fest-2026 build",
-    "build-base": "pnpm --filter @lychees/unreal-fest-2026 build-base",
+    "build-base": "pnpm --filter @lychees/unreal-fest-2026 build-base && node scripts/build-pages.mjs",
     "export": "pnpm --filter @lychees/unreal-fest-2026 export"
   },
   "devDependencies": {

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Lychees 的公开演讲与分享：幻灯片、录像和原始文件。">
+  <meta name="theme-color" content="#080a0d">
+  <title>Talks · Lychees</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+      background: #080a0d;
+      color: #f4f7fb;
+    }
+
+    * { box-sizing: border-box; }
+    body { margin: 0; min-width: 320px; background: radial-gradient(circle at 88% 8%, #12364a 0, transparent 32rem), radial-gradient(circle at 5% 70%, #27152e 0, transparent 30rem), #080a0d; }
+    a { color: inherit; }
+    a:focus-visible { outline: 3px solid #55d9e8; outline-offset: 5px; }
+    .shell { width: min(1120px, calc(100% - 48px)); margin-inline: auto; }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-block: 28px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; font-size: 13px; font-weight: 750; letter-spacing: .18em; text-decoration: none; }
+    .brand::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: #55d9e8; box-shadow: 0 0 24px #55d9e8; }
+    .nav-link { color: #aab4c2; font-size: 14px; text-decoration: none; }
+    .nav-link:hover { color: #fff; }
+    .hero { padding: 58px 0 42px; }
+    .eyebrow { margin: 0 0 18px; color: #55d9e8; font-size: 12px; font-weight: 700; letter-spacing: .22em; }
+    h1 { margin: 0; max-width: 800px; font-size: clamp(48px, 8vw, 88px); line-height: 1.04; letter-spacing: -.055em; }
+    h1 span { color: #8b96a7; }
+    .lede { margin: 24px 0 0; color: #aab4c2; font-size: clamp(16px, 2vw, 19px); line-height: 1.8; }
+    .talk { display: grid; grid-template-columns: 1fr 1.08fr; overflow: hidden; border: 1px solid #ffffff18; border-radius: 24px; background: #10141acc; box-shadow: 0 30px 90px #00000055; backdrop-filter: blur(20px); }
+    .talk-copy { display: flex; flex-direction: column; align-items: flex-start; padding: clamp(28px, 4vw, 46px); }
+    .meta { margin: 0 0 20px; color: #aab4c2; font-size: 12px; font-weight: 650; letter-spacing: .08em; }
+    .talk h2 { margin: 0; font-size: clamp(24px, 3vw, 34px); line-height: 1.38; letter-spacing: -.025em; }
+    .speaker { margin: 18px 0 28px; color: #8b96a7; font-size: 14px; line-height: 1.7; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; }
+    .button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 43px; padding: 10px 16px; border: 1px solid #ffffff20; border-radius: 999px; font-size: 14px; font-weight: 650; text-decoration: none; transition: border-color 160ms ease, background 160ms ease, transform 160ms ease; }
+    .button:hover { border-color: #ffffff55; background: #ffffff0a; transform: translateY(-1px); }
+    .button.primary { border-color: #55d9e8; background: #55d9e8; color: #071116; }
+    .button.primary:hover { background: #8be7f1; }
+    .file-note { margin: 16px 0 0; color: #788493; font-size: 12px; }
+    .preview { position: relative; min-height: 100%; overflow: hidden; border-left: 1px solid #ffffff18; background: #000; text-decoration: none; }
+    .preview img { display: block; width: 100%; height: 100%; min-height: 360px; object-fit: contain; transition: opacity 400ms ease; }
+    .preview:hover img { opacity: .88; }
+    .preview-label { position: absolute; right: 20px; bottom: 20px; padding: 8px 12px; border: 1px solid #ffffff25; border-radius: 999px; background: #000a; backdrop-filter: blur(10px); color: #fff; font-size: 12px; }
+    footer { display: flex; justify-content: space-between; gap: 20px; padding: 28px 0 36px; color: #788493; font-size: 12px; line-height: 1.7; }
+
+    @media (max-width: 800px) {
+      .shell { width: min(100% - 28px, 620px); }
+      .hero { padding: 38px 0 28px; }
+      .talk { grid-template-columns: 1fr; }
+      .preview { border-top: 1px solid #ffffff18; border-left: 0; }
+      .preview img { min-height: 0; aspect-ratio: 16 / 9; }
+      footer { flex-direction: column; gap: 4px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .button, .preview img { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="shell nav">
+    <a class="brand" href="./" aria-label="Talks 首页">LYCHEES / TALKS</a>
+    <a class="nav-link" href="https://github.com/lychees/Talks" target="_blank" rel="noreferrer">GitHub ↗</a>
+  </header>
+
+  <main class="shell">
+    <section class="hero" aria-labelledby="page-title">
+      <p class="eyebrow">SELECTED PUBLIC TALKS</p>
+      <h1 id="page-title">公开演讲<br><span>与分享。</span></h1>
+      <p class="lede">代码、AI，以及那些值得讲清楚的事。</p>
+    </section>
+
+    <article class="talk" aria-labelledby="talk-title">
+      <div class="talk-copy">
+        <p class="meta">2026.10.23 · UNREAL FEST 2026</p>
+        <h2 id="talk-title">眩晕瘫坐？<br>一句话生成 3A 游戏：<br>哪些是真的哪些是假的</h2>
+        <p class="speaker">Feihu Tang<br>Dev Rel, Research Engineer · Moonshot AI</p>
+        <div class="actions">
+          <a class="button primary" href="./2026-10-23-unreal-fest-one-prompt-3a-games/">观看幻灯片 <span aria-hidden="true">→</span></a>
+          <a class="button" href="https://www.bilibili.com/video/BV1xtnY6REby/" target="_blank" rel="noreferrer">B 站完整录像 <span aria-hidden="true">↗</span></a>
+          <a class="button" href="https://media.githubusercontent.com/media/lychees/Talks/main/%E7%9C%A9%E6%99%95%E7%98%AB%E5%9D%90%EF%BC%9F%E4%B8%80%E5%8F%A5%E8%AF%9D%E7%94%9F%E6%88%90_3A_%E6%B8%B8%E6%88%8F_%E5%93%AA%E4%BA%9B%E6%98%AF%E7%9C%9F%E7%9A%84%E5%93%AA%E4%BA%9B%E6%98%AF%E5%81%87%E7%9A%84.pptx">原始 PPT <span aria-hidden="true">↓</span></a>
+        </div>
+        <p class="file-note">PPTX · 683 MiB · Git LFS</p>
+      </div>
+      <a class="preview" href="./2026-10-23-unreal-fest-one-prompt-3a-games/" aria-label="打开 Unreal Fest 2026 幻灯片">
+        <img src="./2026-10-23-unreal-fest-one-prompt-3a-games/slides/slide-001.webp" alt="幻灯片封面：眩晕瘫坐？一句话生成 3A 游戏" width="1920" height="1080">
+        <span class="preview-label">77 页 · 含 8 段演示视频</span>
+      </a>
+    </article>
+  </main>
+
+  <footer class="shell">
+    <span>Built with Slidev · Deployed on GitHub Pages</span>
+    <span>原始文件由 Git LFS 保存</span>
+  </footer>
+</body>
+</html>
