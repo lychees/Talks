@@ -1,0 +1,11 @@
+{
+  "name": "@lychees/unreal-fest-2026",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "slidev --open --remote",
+    "build": "slidev build",
+    "build-base": "slidev build --out ../../dist/2026-10-23-unreal-fest-one-prompt-3a-games --base /Talks/2026-10-23-unreal-fest-one-prompt-3a-games/",
+    "export": "slidev export --output unreal-fest-2026.pdf"
+  }
+}

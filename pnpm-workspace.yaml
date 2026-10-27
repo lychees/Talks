@@ -1,0 +1,10 @@
+packages:
+  - packages/*
+
+overrides:
+  floating-vue: 5.2.2
+
+allowBuilds:
+  esbuild: true
+  playwright-chromium: true
+  vue-demi: true

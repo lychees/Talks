@@ -1,0 +1,20 @@
+{
+  "name": "lychees-talks",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "pnpm@11.20.0",
+  "description": "Selected public talks by Lychees",
+  "scripts": {
+    "dev": "pnpm --filter @lychees/unreal-fest-2026 dev",
+    "build": "pnpm --filter @lychees/unreal-fest-2026 build",
+    "build-base": "pnpm --filter @lychees/unreal-fest-2026 build-base",
+    "export": "pnpm --filter @lychees/unreal-fest-2026 export"
+  },
+  "devDependencies": {
+    "@slidev/cli": "^53.0.0",
+    "@slidev/theme-default": "latest",
+    "playwright-chromium": "^1.56.1",
+    "vite": "^8.3.5"
+  }
+}

@@ -1,0 +1,74 @@
+.slidev-layout {
+  padding: 0 !important;
+  overflow: hidden;
+  background: #000;
+}
+
+.ppt-frame {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #000;
+}
+
+.ppt-image,
+.ppt-video {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  object-fit: contain;
+}
+
+.ppt-image {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.ppt-video {
+  object-fit: cover;
+  background: #000;
+}
+
+.ppt-video-offset {
+  top: 4.02298%;
+  height: 91.95404%;
+}
+
+.ppt-video-link {
+  position: absolute;
+  right: 2.5rem;
+  bottom: 2rem;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.25rem;
+  border: 1px solid rgb(255 255 255 / 24%);
+  border-radius: 999px;
+  color: #fff;
+  background: rgb(0 0 0 / 68%);
+  backdrop-filter: blur(12px);
+  font-size: 1.25rem;
+  line-height: 1.25;
+  text-decoration: none;
+  transition: background 160ms ease, border-color 160ms ease;
+}
+
+.ppt-video-link:hover {
+  border-color: rgb(255 255 255 / 55%);
+  background: rgb(0 0 0 / 85%);
+}
+
+.ppt-video-link:focus-visible {
+  outline: 3px solid #fb7299;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ppt-video-link {
+    transition: none;
+  }
+}

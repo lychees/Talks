@@ -1,0 +1,9 @@
+**/node_modules/
+
+.DS_Store
+.cache/
+dist/
+*.local
+
+# Keep the large source presentation local; the website uses optimized assets.
+/*.pptx
