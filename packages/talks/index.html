@@ -30,6 +30,7 @@
     h1 span { color: #8b96a7; }
     .lede { margin: 24px 0 0; color: #aab4c2; font-size: clamp(16px, 2vw, 19px); line-height: 1.8; }
     .talk { display: grid; grid-template-columns: 1fr 1.08fr; overflow: hidden; border: 1px solid #ffffff18; border-radius: 24px; background: #10141acc; box-shadow: 0 30px 90px #00000055; backdrop-filter: blur(20px); }
+    .talk + .talk { margin-top: 32px; }
     .talk-copy { display: flex; flex-direction: column; align-items: flex-start; padding: clamp(28px, 4vw, 46px); }
     .meta { margin: 0 0 20px; color: #aab4c2; font-size: 12px; font-weight: 650; letter-spacing: .08em; }
     .talk h2 { margin: 0; font-size: clamp(24px, 3vw, 34px); line-height: 1.38; letter-spacing: -.025em; }
@@ -73,21 +74,38 @@
       <p class="lede">代码、AI，以及那些值得讲清楚的事。</p>
     </section>
 
-    <article class="talk" aria-labelledby="talk-title">
+    <article class="talk" aria-labelledby="unreal-title">
       <div class="talk-copy">
         <p class="meta">2026.10.23 · UNREAL FEST 2026</p>
-        <h2 id="talk-title">眩晕瘫坐？<br>一句话生成 3A 游戏：<br>哪些是真的哪些是假的</h2>
+        <h2 id="unreal-title">眩晕瘫坐？<br>一句话生成 3A 游戏：<br>哪些是真的哪些是假的</h2>
         <p class="speaker">Feihu Tang<br>Dev Rel, Research Engineer · Moonshot AI</p>
         <div class="actions">
           <a class="button primary" href="./2026-10-23-unreal-fest-one-prompt-3a-games/">观看幻灯片 <span aria-hidden="true">→</span></a>
           <a class="button" href="https://www.bilibili.com/video/BV1xtnY6REby/" target="_blank" rel="noreferrer">B 站完整录像 <span aria-hidden="true">↗</span></a>
-          <a class="button" href="https://media.githubusercontent.com/media/lychees/Talks/main/%E7%9C%A9%E6%99%95%E7%98%AB%E5%9D%90%EF%BC%9F%E4%B8%80%E5%8F%A5%E8%AF%9D%E7%94%9F%E6%88%90_3A_%E6%B8%B8%E6%88%8F_%E5%93%AA%E4%BA%9B%E6%98%AF%E7%9C%9F%E7%9A%84%E5%93%AA%E4%BA%9B%E6%98%AF%E5%81%87%E7%9A%84.pptx">原始 PPT <span aria-hidden="true">↓</span></a>
+          <a class="button" href="https://media.githubusercontent.com/media/lychees/Talks/main/slides/%E7%9C%A9%E6%99%95%E7%98%AB%E5%9D%90%EF%BC%9F%E4%B8%80%E5%8F%A5%E8%AF%9D%E7%94%9F%E6%88%90_3A_%E6%B8%B8%E6%88%8F_%E5%93%AA%E4%BA%9B%E6%98%AF%E7%9C%9F%E7%9A%84%E5%93%AA%E4%BA%9B%E6%98%AF%E5%81%87%E7%9A%84.pptx">原始 PPT <span aria-hidden="true">↓</span></a>
         </div>
         <p class="file-note">PPTX · 683 MiB · Git LFS</p>
       </div>
       <a class="preview" href="./2026-10-23-unreal-fest-one-prompt-3a-games/" aria-label="打开 Unreal Fest 2026 幻灯片">
         <img src="./2026-10-23-unreal-fest-one-prompt-3a-games/slides/slide-001.webp" alt="幻灯片封面：眩晕瘫坐？一句话生成 3A 游戏" width="1920" height="1080">
         <span class="preview-label">77 页 · 含 8 段演示视频</span>
+      </a>
+    </article>
+
+    <article class="talk" aria-labelledby="gosim-title">
+      <div class="talk-copy">
+        <p class="meta">2026.10 · GOSIM SHENZHEN</p>
+        <h2 id="gosim-title">GOSIM Shenzhen 2026</h2>
+        <p class="speaker">Google Slides 与完整演讲录像</p>
+        <div class="actions">
+          <a class="button primary" href="https://docs.google.com/presentation/d/1ZbJXLxvCHTbNorHw-DN89hVl5xzKgrcs_1YY2ZerD08/edit?usp=sharing" target="_blank" rel="noreferrer">Google Slides <span aria-hidden="true">↗</span></a>
+          <a class="button" href="https://www.bilibili.com/video/BV1qYnL6tEiv" target="_blank" rel="noreferrer">B 站完整录像 <span aria-hidden="true">↗</span></a>
+        </div>
+        <p class="file-note">4 个分 P · 约 68 分钟</p>
+      </div>
+      <a class="preview" href="https://docs.google.com/presentation/d/1ZbJXLxvCHTbNorHw-DN89hVl5xzKgrcs_1YY2ZerD08/edit?usp=sharing" target="_blank" rel="noreferrer" aria-label="打开 GOSIM Shenzhen 2026 的 Google Slides">
+        <img src="./gosim-shenzhen-2026.jpg" alt="GOSIM Shenzhen 2026 演讲现场" width="1920" height="1080">
+        <span class="preview-label">Google Slides · Bilibili</span>
       </a>
     </article>
   </main>

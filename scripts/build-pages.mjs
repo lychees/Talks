@@ -1,5 +1,5 @@
-import { copyFile, mkdir, writeFile } from 'node:fs/promises'
+import { cp, mkdir, writeFile } from 'node:fs/promises'
 
 await mkdir('dist', { recursive: true })
-await copyFile('packages/talks/index.html', 'dist/index.html')
+await cp('packages/talks', 'dist', { recursive: true })
 await writeFile('dist/.nojekyll', '')
