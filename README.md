@@ -6,13 +6,13 @@
 
 ## Presented
 
-按演讲日期倒序排列。
+按演讲时间倒序排列；时段均为北京时间（UTC+8）。
 
-| 日期 | 活动 | 演讲 | 资料 |
+| 时间 | 活动 | 演讲 | 资料 |
 | --- | --- | --- | --- |
-| 2026.10.23 | Unreal Fest 2026 | **眩晕瘫坐？一句话生成 3A 游戏：哪些是真的哪些是假的**<br>Feihu Tang · Moonshot AI | [幻灯片源码](packages/2026-10-23-unreal-fest-one-prompt-3a-games/slides.md) · [完整视频（bilibili）](https://www.bilibili.com/video/BV1xtnY6REby/) |
-| 2026.10.16 | GOSIM Shenzhen | **GOSIM Shenzhen 2026** | [Google Slides](https://docs.google.com/presentation/d/1ZbJXLxvCHTbNorHw-DN89hVl5xzKgrcs_1YY2ZerD08/edit?usp=sharing) · [原始 PPTX](https://docs.google.com/presentation/d/1ZbJXLxvCHTbNorHw-DN89hVl5xzKgrcs_1YY2ZerD08/export/pptx?usp=sharing) · [完整视频（bilibili）](https://www.bilibili.com/video/BV1qYnL6tEiv) |
-| 2026.10.16 | RustChinaConf 2026 | **AI 生成 Rust 项目分析**<br>唐飞虎 · Moonshot AI | [Kimi 对话](https://www.kimi.com/share/1a17be3f-c132-8d6e-8000-000078400a97) · [完整视频（bilibili）](https://www.bilibili.com/video/BV1R9nG6jEHP/) |
+| 2026.10.22 · 时段待确认 | Unreal Fest 2026 | **眩晕瘫坐？一句话生成 3A 游戏：哪些是真的哪些是假的**<br>Feihu Tang · Moonshot AI | [幻灯片源码](packages/2026-10-23-unreal-fest-one-prompt-3a-games/slides.md) · [完整视频（bilibili）](https://www.bilibili.com/video/BV1xtnY6REby/) |
+| 2026.10.17 · 14:35–15:10 | GOSIM Shenzhen | **开源大模型端侧推理性能优化与 Agent 协同**<br>Minako Kojima · Moonshot AI | [Google Slides](https://docs.google.com/presentation/d/1ZbJXLxvCHTbNorHw-DN89hVl5xzKgrcs_1YY2ZerD08/edit?usp=sharing) · [原始 PPTX](https://docs.google.com/presentation/d/1ZbJXLxvCHTbNorHw-DN89hVl5xzKgrcs_1YY2ZerD08/export/pptx?usp=sharing) · [完整视频（bilibili）](https://www.bilibili.com/video/BV1qYnL6tEiv) |
+| 2026.10.16 · 11:35–12:00 | RustChinaConf 2026 | **AI 生成 Rust 项目分析**<br>唐飞虎 · Moonshot AI | [Kimi 对话](https://www.kimi.com/share/1a17be3f-c132-8d6e-8000-000078400a97) · [完整视频（bilibili）](https://www.bilibili.com/video/BV1R9nG6jEHP/) |
 
 ## 本地运行
 

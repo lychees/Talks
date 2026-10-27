@@ -33,6 +33,8 @@
     .talk + .talk { margin-top: 32px; }
     .talk-copy { display: flex; flex-direction: column; align-items: flex-start; padding: clamp(28px, 4vw, 46px); }
     .meta { margin: 0 0 20px; color: #aab4c2; font-size: 12px; font-weight: 650; letter-spacing: .08em; }
+    .schedule { margin: -10px 0 18px; color: #55d9e8; font-size: 13px; font-weight: 650; letter-spacing: .04em; }
+    .schedule.pending { color: #8b96a7; }
     .talk h2 { margin: 0; font-size: clamp(24px, 3vw, 34px); line-height: 1.38; letter-spacing: -.025em; }
     .speaker { margin: 18px 0 28px; color: #8b96a7; font-size: 14px; line-height: 1.7; }
     .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; }
@@ -76,7 +78,8 @@
 
     <article class="talk" aria-labelledby="unreal-title">
       <div class="talk-copy">
-        <p class="meta"><time datetime="2026-10-23">2026.10.23</time> · UNREAL FEST 2026</p>
+        <p class="meta"><time datetime="2026-10-22">2026.10.22</time> · UNREAL FEST 2026</p>
+        <p class="schedule pending">具体时段待确认</p>
         <h2 id="unreal-title">眩晕瘫坐？<br>一句话生成 3A 游戏：<br>哪些是真的哪些是假的</h2>
         <p class="speaker">Feihu Tang<br>Dev Rel, Research Engineer · Moonshot AI</p>
         <div class="actions">
@@ -94,9 +97,10 @@
 
     <article class="talk" aria-labelledby="gosim-title">
       <div class="talk-copy">
-        <p class="meta"><time datetime="2026-10-16">2026.10.16</time> · GOSIM SHENZHEN</p>
-        <h2 id="gosim-title">GOSIM Shenzhen 2026</h2>
-        <p class="speaker">Google Slides 与完整演讲录像</p>
+        <p class="meta"><time datetime="2026-10-17">2026.10.17</time> · GOSIM SHENZHEN</p>
+        <p class="schedule"><time datetime="2026-10-17T14:35:00+08:00">14:35–15:10（UTC+8）</time></p>
+        <h2 id="gosim-title">开源大模型端侧推理性能优化<br>与 Agent 协同</h2>
+        <p class="speaker">Minako Kojima · 月之暗面</p>
         <div class="actions">
           <a class="button primary" href="https://docs.google.com/presentation/d/1ZbJXLxvCHTbNorHw-DN89hVl5xzKgrcs_1YY2ZerD08/edit?usp=sharing" target="_blank" rel="noreferrer">Google Slides <span aria-hidden="true">↗</span></a>
           <a class="button" href="https://www.bilibili.com/video/BV1qYnL6tEiv" target="_blank" rel="noreferrer">B 站完整录像 <span aria-hidden="true">↗</span></a>
@@ -113,6 +117,7 @@
     <article class="talk" aria-labelledby="rustconf-title">
       <div class="talk-copy">
         <p class="meta"><time datetime="2026-10-16">2026.10.16</time> · RUSTCHINACONF 2026</p>
+        <p class="schedule"><time datetime="2026-10-16T11:35:00+08:00">11:35–12:00（UTC+8）</time></p>
         <h2 id="rustconf-title">AI 生成 Rust 项目分析</h2>
         <p class="speaker">唐飞虎 · 月之暗面</p>
         <div class="actions">
