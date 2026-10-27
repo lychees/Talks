@@ -4,6 +4,3 @@
 .cache/
 dist/
 *.local
-
-# Keep the large source presentation local; the website uses optimized assets.
-/*.pptx
