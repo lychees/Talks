@@ -4,153 +4,157 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Lychees 的公开演讲与分享：幻灯片、录像和原始文件。">
-  <meta name="theme-color" content="#080a0d">
+  <meta name="theme-color" content="#07090f">
   <title>Talks · Lychees</title>
-  <style>
-    :root {
-      color-scheme: dark;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
-      background: #080a0d;
-      color: #f4f7fb;
-    }
-
-    * { box-sizing: border-box; }
-    body { margin: 0; min-width: 320px; background: radial-gradient(circle at 88% 8%, #12364a 0, transparent 32rem), radial-gradient(circle at 5% 70%, #27152e 0, transparent 30rem), #080a0d; }
-    a { color: inherit; }
-    a:focus-visible { outline: 3px solid #55d9e8; outline-offset: 5px; }
-    .shell { width: min(1120px, calc(100% - 48px)); margin-inline: auto; }
-    .nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-block: 28px; }
-    .brand { display: inline-flex; align-items: center; gap: 11px; font-size: 13px; font-weight: 750; letter-spacing: .18em; text-decoration: none; }
-    .brand::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: #55d9e8; box-shadow: 0 0 24px #55d9e8; }
-    .nav-link { color: #aab4c2; font-size: 14px; text-decoration: none; }
-    .nav-link:hover { color: #fff; }
-    .hero { padding: 58px 0 42px; }
-    .eyebrow { margin: 0 0 18px; color: #55d9e8; font-size: 12px; font-weight: 700; letter-spacing: .22em; }
-    h1 { margin: 0; max-width: 800px; font-size: clamp(48px, 8vw, 88px); line-height: 1.04; letter-spacing: -.055em; }
-    h1 span { color: #8b96a7; }
-    .lede { margin: 24px 0 0; color: #aab4c2; font-size: clamp(16px, 2vw, 19px); line-height: 1.8; }
-    .talk { display: grid; grid-template-columns: 1fr 1.08fr; overflow: hidden; border: 1px solid #ffffff18; border-radius: 24px; background: #10141acc; box-shadow: 0 30px 90px #00000055; backdrop-filter: blur(20px); }
-    .talk + .talk { margin-top: 32px; }
-    .talk-copy { display: flex; flex-direction: column; align-items: flex-start; padding: clamp(28px, 4vw, 46px); }
-    .meta { margin: 0 0 20px; color: #aab4c2; font-size: 12px; font-weight: 650; letter-spacing: .08em; }
-    .schedule { margin: -10px 0 18px; color: #55d9e8; font-size: 13px; font-weight: 650; letter-spacing: .04em; }
-    .schedule.pending { color: #8b96a7; }
-    .talk h2 { margin: 0; font-size: clamp(24px, 3vw, 34px); line-height: 1.38; letter-spacing: -.025em; }
-    .speaker { margin: 18px 0 28px; color: #8b96a7; font-size: 14px; line-height: 1.7; }
-    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; }
-    .button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 43px; padding: 10px 16px; border: 1px solid #ffffff20; border-radius: 999px; font-size: 14px; font-weight: 650; text-decoration: none; transition: border-color 160ms ease, background 160ms ease, transform 160ms ease; }
-    .button:hover { border-color: #ffffff55; background: #ffffff0a; transform: translateY(-1px); }
-    .button.primary { border-color: #55d9e8; background: #55d9e8; color: #071116; }
-    .button.primary:hover { background: #8be7f1; }
-    .file-note { margin: 16px 0 0; color: #788493; font-size: 12px; }
-    .related { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 12px; font-size: 12px; }
-    .related a { color: #aab4c2; text-decoration: none; border-bottom: 1px solid #ffffff30; }
-    .related a:hover { color: #fff; border-bottom-color: #55d9e8; }
-    .preview { position: relative; min-height: 100%; overflow: hidden; border-left: 1px solid #ffffff18; background: #000; text-decoration: none; }
-    .preview img { display: block; width: 100%; height: 100%; min-height: 360px; object-fit: contain; transition: opacity 400ms ease; }
-    .preview:hover img { opacity: .88; }
-    .preview-label { position: absolute; right: 20px; bottom: 20px; padding: 8px 12px; border: 1px solid #ffffff25; border-radius: 999px; background: #000a; backdrop-filter: blur(10px); color: #fff; font-size: 12px; }
-    footer { display: flex; justify-content: space-between; gap: 20px; padding: 28px 0 36px; color: #788493; font-size: 12px; line-height: 1.7; }
-
-    @media (max-width: 800px) {
-      .shell { width: min(100% - 28px, 620px); }
-      .hero { padding: 38px 0 28px; }
-      .talk { grid-template-columns: 1fr; }
-      .preview { border-top: 1px solid #ffffff18; border-left: 0; }
-      .preview img { min-height: 0; aspect-ratio: 16 / 9; }
-      footer { flex-direction: column; gap: 4px; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .button, .preview img { transition: none; }
-    }
-  </style>
+  <link rel="stylesheet" href="./styles.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="module" src="./main.js"></script>
 </head>
-<body>
-  <header class="shell nav">
-    <a class="brand" href="./" aria-label="Talks 首页">LYCHEES / TALKS</a>
-    <a class="nav-link" href="https://github.com/lychees/Talks" target="_blank" rel="noreferrer">GitHub ↗</a>
+<body id="top">
+  <a class="skip-link" href="#talks">跳到演讲列表</a>
+  <div class="scroll-progress" aria-hidden="true"><span></span></div>
+  <canvas id="network" aria-hidden="true"></canvas>
+  <div class="aurora" aria-hidden="true">
+    <span class="orb orb-cyan"></span>
+    <span class="orb orb-violet"></span>
+    <span class="orb orb-amber"></span>
+  </div>
+
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="./" aria-label="Talks 首页">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>LYCHEES <span class="brand-divider">/</span> <span class="brand-muted">TALKS</span></span>
+      </a>
+      <nav class="nav-links" aria-label="主导航">
+        <a href="#talks">演讲</a>
+        <a href="https://github.com/lychees/Talks" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
   </header>
 
-  <main class="shell">
-    <section class="hero" aria-labelledby="page-title">
-      <p class="eyebrow">SELECTED PUBLIC TALKS</p>
-      <h1 id="page-title">公开演讲<br><span>与分享。</span></h1>
-      <p class="lede">代码、AI，以及那些值得讲清楚的事。</p>
+  <main>
+    <section class="hero shell" aria-labelledby="page-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-line"></span>SELECTED PUBLIC TALKS <span class="hero-year">2026</span></p>
+        <h1 id="page-title">公开演讲<br><span class="gradient-text">与分享。</span></h1>
+        <p class="lede">代码、AI，以及那些值得讲清楚的事。<span>Talks about building, breaking, and learning.</span></p>
+        <div class="hero-actions">
+          <a class="button primary" href="#talks">探索演讲 <span aria-hidden="true">↓</span></a>
+          <a class="button ghost" href="https://github.com/lychees/Talks" target="_blank" rel="noreferrer">查看源码 <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="orbit">
+          <span class="orbit-ring ring-outer"></span>
+          <span class="orbit-ring ring-inner"></span>
+          <span class="orbit-dot dot-cyan"></span>
+          <span class="orbit-dot dot-violet"></span>
+          <span class="orbit-dot dot-amber"></span>
+          <div class="orbit-center">
+            <strong data-count="3">3</strong>
+            <span>PUBLIC<br>TALKS</span>
+          </div>
+        </div>
+        <div class="hero-tags"><span>AI</span><span>RUST</span><span>GAMES</span></div>
+      </div>
     </section>
 
-    <article class="talk" aria-labelledby="unreal-title">
-      <div class="talk-copy">
-        <p class="meta"><time datetime="2026-10-22">2026.10.22</time> · UNREAL FEST 2026</p>
-        <p class="schedule pending">具体时段待确认</p>
-        <h2 id="unreal-title">眩晕瘫坐？<br>一句话生成 3A 游戏：<br>哪些是真的哪些是假的</h2>
-        <p class="speaker">Feihu Tang<br>Dev Rel, Research Engineer · Moonshot AI</p>
-        <div class="actions">
-          <a class="button primary" href="./2026-10-23-unreal-fest-one-prompt-3a-games/">观看幻灯片 <span aria-hidden="true">→</span></a>
-          <a class="button" href="https://www.bilibili.com/video/BV1xtnY6REby/" target="_blank" rel="noreferrer">B 站完整录像 <span aria-hidden="true">↗</span></a>
-          <a class="button" href="https://media.githubusercontent.com/media/lychees/Talks/main/slides/%E7%9C%A9%E6%99%95%E7%98%AB%E5%9D%90%EF%BC%9F%E4%B8%80%E5%8F%A5%E8%AF%9D%E7%94%9F%E6%88%90_3A_%E6%B8%B8%E6%88%8F_%E5%93%AA%E4%BA%9B%E6%98%AF%E7%9C%9F%E7%9A%84%E5%93%AA%E4%BA%9B%E6%98%AF%E5%81%87%E7%9A%84.pptx">原始 PPT <span aria-hidden="true">↓</span></a>
-        </div>
-        <p class="file-note">PPTX · 683 MiB · Git LFS</p>
-        <p class="related">
-          <a href="https://www.unrealengine.com/unreal-fest?lang=zh-CN" target="_blank" rel="noreferrer">活动官网 ↗</a>
-          <a href="https://www.taptap.cn/moment/863322876667758591?group_id=162660" target="_blank" rel="noreferrer">相关报道 ↗</a>
-        </p>
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span>AGENTIC AI</span><i></i><span>RUST</span><i></i><span>GAME DEVELOPMENT</span><i></i><span>INFERENCE</span><i></i><span>OPEN SOURCE</span><i></i>
+        <span>AGENTIC AI</span><i></i><span>RUST</span><i></i><span>GAME DEVELOPMENT</span><i></i><span>INFERENCE</span><i></i><span>OPEN SOURCE</span><i></i>
       </div>
-      <a class="preview" href="./2026-10-23-unreal-fest-one-prompt-3a-games/" aria-label="打开 Unreal Fest 2026 幻灯片">
-        <img src="./2026-10-23-unreal-fest-one-prompt-3a-games/slides/slide-001.webp" alt="幻灯片封面：眩晕瘫坐？一句话生成 3A 游戏" width="1920" height="1080">
-        <span class="preview-label">77 页 · 含 8 段演示视频</span>
-      </a>
-    </article>
+    </div>
 
-    <article class="talk" aria-labelledby="gosim-title">
-      <div class="talk-copy">
-        <p class="meta"><time datetime="2026-10-16">2026.10.16</time> · GOSIM SHENZHEN</p>
-        <p class="schedule"><time datetime="2026-10-16T14:35:00+08:00">14:35–15:10（UTC+8）</time></p>
-        <h2 id="gosim-title">开源大模型端侧推理性能优化<br>与 Agent 协同</h2>
-        <p class="speaker">Minako Kojima · 月之暗面</p>
-        <div class="actions">
-          <a class="button primary" href="https://docs.google.com/presentation/d/1ZbJXLxvCHTbNorHw-DN89hVl5xzKgrcs_1YY2ZerD08/edit?usp=sharing" target="_blank" rel="noreferrer">Google Slides <span aria-hidden="true">↗</span></a>
-          <a class="button" href="https://www.bilibili.com/video/BV1qYnL6tEiv" target="_blank" rel="noreferrer">B 站完整录像 <span aria-hidden="true">↗</span></a>
-          <a class="button" href="https://docs.google.com/presentation/d/1ZbJXLxvCHTbNorHw-DN89hVl5xzKgrcs_1YY2ZerD08/export/pptx?usp=sharing" target="_blank" rel="noreferrer">原始 PPT <span aria-hidden="true">↓</span></a>
+    <section class="talks shell" id="talks" aria-labelledby="talks-heading">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow"><span class="eyebrow-line"></span>CHRONOLOGICAL</p>
+          <h2 id="talks-heading">最近的分享</h2>
         </div>
-        <p class="file-note">PPTX · Google 导出 · 4 个分 P · 约 68 分钟</p>
-        <p class="related">
-          <a href="https://shenzhen2026.gosim.org/zh/schedule/p-204-optimization-of-edge-side-inference-performance-for-open-source-large-models-and-collaboration-between-agents/" target="_blank" rel="noreferrer">活动官网 ↗</a>
-          <a href="https://www.21ic.com/a/1014890.html" target="_blank" rel="noreferrer">相关报道 ↗</a>
-        </p>
+        <p>按演讲时间倒序 · 时段均为 UTC+8</p>
       </div>
-      <a class="preview" href="https://docs.google.com/presentation/d/1ZbJXLxvCHTbNorHw-DN89hVl5xzKgrcs_1YY2ZerD08/edit?usp=sharing" target="_blank" rel="noreferrer" aria-label="打开 GOSIM Shenzhen 2026 的 Google Slides">
-        <img src="./gosim-shenzhen-2026.jpg" alt="GOSIM Shenzhen 2026 演讲现场" width="1920" height="1080">
-        <span class="preview-label">Google Slides · Bilibili</span>
-      </a>
-    </article>
 
-    <article class="talk" aria-labelledby="rustconf-title">
-      <div class="talk-copy">
-        <p class="meta"><time datetime="2026-10-16">2026.10.16</time> · RUSTCHINACONF 2026</p>
-        <p class="schedule"><time datetime="2026-10-16T11:35:00+08:00">11:35–12:00（UTC+8）</time></p>
-        <h2 id="rustconf-title">AI 生成 Rust 项目分析</h2>
-        <p class="speaker">唐飞虎 · 月之暗面</p>
-        <div class="actions">
-          <a class="button primary" href="https://www.kimi.com/share/1a17be3f-c132-8d6e-8000-000078400a97" target="_blank" rel="noreferrer">Kimi 对话 <span aria-hidden="true">↗</span></a>
-          <a class="button" href="https://www.bilibili.com/video/BV1R9nG6jEHP/" target="_blank" rel="noreferrer">B 站完整录像 <span aria-hidden="true">↗</span></a>
-        </div>
-        <p class="file-note">Kimi 分享会话 · 约 27 分钟</p>
-        <p class="related">
-          <a href="https://rustchinaconf.org/zh-CN/" target="_blank" rel="noreferrer">活动官网 ↗</a>
-          <a href="https://www.jxxy.net/ai/articles/blackanger-2103499096019628218/" target="_blank" rel="noreferrer">相关报道 ↗</a>
-        </p>
+      <div class="timeline">
+        <article class="talk unreal reveal" data-index="01" style="--accent: #55d9e8; --accent-rgb: 85, 217, 232; --delay: 0ms;" aria-labelledby="unreal-title">
+          <div class="talk-copy">
+            <p class="meta"><time datetime="2026-10-22">2026.10.22</time><span class="meta-separator">/</span>UNREAL FEST 2026</p>
+            <p class="schedule pending"><span class="schedule-dot"></span>具体时段待确认</p>
+            <h2 id="unreal-title">眩晕瘫坐？<br>一句话生成 3A 游戏：<br>哪些是真的哪些是假的</h2>
+            <p class="speaker"><strong>Feihu Tang</strong><span>Dev Rel, Research Engineer · Moonshot AI</span></p>
+            <div class="actions">
+              <a class="button primary" href="./2026-10-23-unreal-fest-one-prompt-3a-games/">观看幻灯片 <span aria-hidden="true">→</span></a>
+              <a class="button ghost" href="https://www.bilibili.com/video/BV1xtnY6REby/" target="_blank" rel="noreferrer">B 站完整录像 <span aria-hidden="true">↗</span></a>
+              <a class="button ghost" href="https://media.githubusercontent.com/media/lychees/Talks/main/slides/%E7%9C%A9%E6%99%95%E7%98%AB%E5%9D%90%EF%BC%9F%E4%B8%80%E5%8F%A5%E8%AF%9D%E7%94%9F%E6%88%90_3A_%E6%B8%B8%E6%88%8F_%E5%93%AA%E4%BA%9B%E6%98%AF%E7%9C%9F%E7%9A%84%E5%93%AA%E4%BA%9B%E6%98%AF%E5%81%87%E7%9A%84.pptx">原始 PPT <span aria-hidden="true">↓</span></a>
+            </div>
+            <p class="file-note">PPTX · 683 MiB · Git LFS</p>
+            <p class="related">
+              <a href="https://www.unrealengine.com/unreal-fest?lang=zh-CN" target="_blank" rel="noreferrer">活动官网 ↗</a>
+              <a href="https://www.taptap.cn/moment/863322876667758591?group_id=162660" target="_blank" rel="noreferrer">相关报道 ↗</a>
+            </p>
+          </div>
+          <a class="preview" href="./2026-10-23-unreal-fest-one-prompt-3a-games/" aria-label="打开 Unreal Fest 2026 幻灯片">
+            <img src="./2026-10-23-unreal-fest-one-prompt-3a-games/slides/slide-001.webp" alt="幻灯片封面：眩晕瘫坐？一句话生成 3A 游戏" width="1920" height="1080">
+            <span class="preview-shade"></span>
+            <span class="preview-label">77 页 · 含 8 段演示视频</span>
+          </a>
+        </article>
+
+        <article class="talk gosim reveal" data-index="02" style="--accent: #b29dff; --accent-rgb: 178, 157, 255; --delay: 100ms;" aria-labelledby="gosim-title">
+          <div class="talk-copy">
+            <p class="meta"><time datetime="2026-10-16">2026.10.16</time><span class="meta-separator">/</span>GOSIM SHENZHEN</p>
+            <p class="schedule"><span class="schedule-dot"></span><time datetime="2026-10-16T14:35:00+08:00">14:35–15:10（UTC+8）</time></p>
+            <h2 id="gosim-title">开源大模型端侧推理性能优化<br>与 Agent 协同</h2>
+            <p class="speaker"><strong>Minako Kojima</strong><span>月之暗面开发者关系负责人</span></p>
+            <div class="actions">
+              <a class="button primary" href="https://docs.google.com/presentation/d/1ZbJXLxvCHTbNorHw-DN89hVl5xzKgrcs_1YY2ZerD08/edit?usp=sharing" target="_blank" rel="noreferrer">Google Slides <span aria-hidden="true">↗</span></a>
+              <a class="button ghost" href="https://www.bilibili.com/video/BV1qYnL6tEiv" target="_blank" rel="noreferrer">B 站完整录像 <span aria-hidden="true">↗</span></a>
+              <a class="button ghost" href="https://docs.google.com/presentation/d/1ZbJXLxvCHTbNorHw-DN89hVl5xzKgrcs_1YY2ZerD08/export/pptx?usp=sharing" target="_blank" rel="noreferrer">原始 PPT <span aria-hidden="true">↓</span></a>
+            </div>
+            <p class="file-note">PPTX · Google 导出 · 4 个分 P · 约 68 分钟</p>
+            <p class="related">
+              <a href="https://shenzhen2026.gosim.org/zh/schedule/p-204-optimization-of-edge-side-inference-performance-for-open-source-large-models-and-collaboration-between-agents/" target="_blank" rel="noreferrer">活动官网 ↗</a>
+              <a href="https://www.21ic.com/a/1014890.html" target="_blank" rel="noreferrer">相关报道 ↗</a>
+            </p>
+          </div>
+          <a class="preview" href="https://docs.google.com/presentation/d/1ZbJXLxvCHTbNorHw-DN89hVl5xzKgrcs_1YY2ZerD08/edit?usp=sharing" target="_blank" rel="noreferrer" aria-label="打开 GOSIM Shenzhen 2026 的 Google Slides">
+            <img src="./gosim-shenzhen-2026.jpg" alt="GOSIM Shenzhen 2026 演讲现场" width="1920" height="1080">
+            <span class="preview-shade"></span>
+            <span class="preview-label">Google Slides · Bilibili</span>
+          </a>
+        </article>
+
+        <article class="talk rustconf reveal" data-index="03" style="--accent: #ffb86b; --accent-rgb: 255, 184, 107; --delay: 200ms;" aria-labelledby="rustconf-title">
+          <div class="talk-copy">
+            <p class="meta"><time datetime="2026-10-16">2026.10.16</time><span class="meta-separator">/</span>RUSTCHINACONF 2026</p>
+            <p class="schedule"><span class="schedule-dot"></span><time datetime="2026-10-16T11:35:00+08:00">11:35–12:00（UTC+8）</time></p>
+            <h2 id="rustconf-title">AI 生成 Rust 项目分析</h2>
+            <p class="speaker"><strong>唐飞虎</strong><span>月之暗面开发者关系负责人 · 研发工程师</span></p>
+            <div class="actions">
+              <a class="button primary" href="https://www.kimi.com/share/1a17be3f-c132-8d6e-8000-000078400a97" target="_blank" rel="noreferrer">Kimi 对话 <span aria-hidden="true">↗</span></a>
+              <a class="button ghost" href="https://www.bilibili.com/video/BV1R9nG6jEHP/" target="_blank" rel="noreferrer">B 站完整录像 <span aria-hidden="true">↗</span></a>
+            </div>
+            <p class="file-note">Kimi 分享会话 · 约 27 分钟</p>
+            <p class="related">
+              <a href="https://rustchinaconf.org/zh-CN/" target="_blank" rel="noreferrer">活动官网 ↗</a>
+              <a href="https://www.jxxy.net/ai/articles/blackanger-2103499096019628218/" target="_blank" rel="noreferrer">相关报道 ↗</a>
+            </p>
+          </div>
+          <a class="preview" href="https://www.kimi.com/share/1a17be3f-c132-8d6e-8000-000078400a97" target="_blank" rel="noreferrer" aria-label="查看 AI 生成 Rust 项目分析的 Kimi 对话">
+            <img src="./rustconf.jpg" alt="RustChinaConf 2026 演讲现场" width="1920" height="1080">
+            <span class="preview-shade"></span>
+            <span class="preview-label">Kimi 对话 · Bilibili</span>
+          </a>
+        </article>
       </div>
-      <a class="preview" href="https://www.kimi.com/share/1a17be3f-c132-8d6e-8000-000078400a97" target="_blank" rel="noreferrer" aria-label="查看 AI 生成 Rust 项目分析的 Kimi 对话">
-        <img src="./rustconf.jpg" alt="RustChinaConf 2026 演讲现场" width="1920" height="1080">
-        <span class="preview-label">Kimi 对话 · Bilibili</span>
-      </a>
-    </article>
+    </section>
   </main>
 
-  <footer class="shell">
-    <span>Built with Slidev · Deployed on GitHub Pages</span>
+  <footer class="site-footer shell">
+    <div><span class="footer-dot"></span>Built with Slidev · Deployed on GitHub Pages</div>
     <span>原始文件由 Git LFS 保存</span>
+    <a href="#top">回到顶部 <span aria-hidden="true">↑</span></a>
   </footer>
 </body>
 </html>
