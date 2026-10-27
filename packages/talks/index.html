@@ -37,8 +37,8 @@
     <section class="hero shell" aria-labelledby="page-title">
       <div class="hero-copy">
         <p class="eyebrow"><span class="eyebrow-line"></span>SELECTED PUBLIC TALKS <span class="hero-year">2026</span></p>
-        <h1 id="page-title">公开演讲<br><span class="gradient-text">与分享。</span></h1>
-        <p class="lede">代码、AI，以及那些值得讲清楚的事。<span>Talks about building, breaking, and learning.</span></p>
+        <h1 id="page-title">演讲档案<br><span class="gradient-text">持续更新。</span></h1>
+        <p class="lede">演讲、幻灯片与工程实践。<span>Search talks, slides, videos, and original files.</span></p>
         <div class="hero-actions">
           <a class="button primary" href="#talks">探索演讲 <span aria-hidden="true">↓</span></a>
           <a class="button ghost" href="https://github.com/lychees/Talks" target="_blank" rel="noreferrer">查看源码 <span aria-hidden="true">↗</span></a>
@@ -70,13 +70,41 @@
     <section class="talks shell" id="talks" aria-labelledby="talks-heading">
       <div class="section-heading">
         <div>
-          <p class="eyebrow"><span class="eyebrow-line"></span>CHRONOLOGICAL</p>
-          <h2 id="talks-heading">最近的分享</h2>
+          <p class="eyebrow"><span class="eyebrow-line"></span>THE TALKS ARCHIVE</p>
+          <h2 id="talks-heading">演讲库</h2>
         </div>
-        <p>按演讲时间倒序 · 时段均为 UTC+8</p>
+        <p>按时间整理 · 时段均为 UTC+8</p>
       </div>
 
-      <div class="timeline">
+      <div class="catalog-controls" role="search" aria-label="筛选演讲">
+        <label class="search-field">
+          <span class="sr-only">搜索演讲、活动或嘉宾</span>
+          <input id="talk-search" type="search" placeholder="搜索演讲、活动或嘉宾" autocomplete="off" aria-controls="talk-list">
+        </label>
+        <label class="select-field">
+          <span class="sr-only">按年份筛选</span>
+          <select id="talk-year" aria-controls="talk-list">
+            <option value="all">全部年份</option>
+            <option value="2026">2026</option>
+            <option value="2025">2025</option>
+          </select>
+        </label>
+        <label class="select-field">
+          <span class="sr-only">按日期排序</span>
+          <select id="talk-sort" aria-controls="talk-list">
+            <option value="desc">最新在前</option>
+            <option value="asc">最早在前</option>
+          </select>
+        </label>
+        <button class="button ghost" id="talk-reset" type="button">重置</button>
+        <p class="catalog-status" id="catalog-status" role="status" aria-live="polite" aria-atomic="true">8 / 8 场演讲</p>
+      </div>
+      <div class="catalog-empty" id="catalog-empty" hidden>
+        <p>没有找到匹配的演讲。</p>
+        <button class="button ghost" id="catalog-reset-empty" type="button">重置筛选</button>
+      </div>
+
+      <div class="timeline" id="talk-list">
         <article class="talk unreal reveal" data-index="01" style="--accent: #55d9e8; --accent-rgb: 85, 217, 232; --delay: 0ms;" aria-labelledby="unreal-title">
           <div class="talk-copy">
             <p class="meta"><time datetime="2026-10-22">2026.10.22</time><span class="meta-separator">/</span>UNREAL FEST 2026</p>

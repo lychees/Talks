@@ -186,3 +186,67 @@ if (!reducedMotion.matches) {
     }
   })
 }
+
+const catalogList = document.querySelector('.timeline')
+const catalogSearch = document.querySelector('#talk-search')
+const catalogYear = document.querySelector('#talk-year')
+const catalogSort = document.querySelector('#talk-sort')
+const catalogStatus = document.querySelector('#catalog-status')
+const catalogEmpty = document.querySelector('#catalog-empty')
+const catalogEntries = Array.from(catalogList.querySelectorAll('.talk'), (element, index) => {
+  const date = element.querySelector('.meta time').dateTime
+  const time = element.querySelector('.schedule time')?.dateTime
+  const searchText = Array.from(element.querySelectorAll('.meta, h2, .speaker'))
+    .map(field => field.textContent.replace(/\s+/g, ' '))
+    .join(' ')
+    .toLocaleLowerCase('zh-CN')
+  return {
+    element,
+    index,
+    year: date.slice(0, 4),
+    timestamp: Date.parse(time || `${date}T00:00:00+08:00`),
+    searchText,
+  }
+})
+
+function applyCatalogFilters() {
+  const query = catalogSearch.value.trim().toLocaleLowerCase('zh-CN')
+  const direction = catalogSort.value === 'asc' ? 1 : -1
+  let visibleIndex = 0
+
+  catalogEntries.slice()
+    .sort((first, second) => (first.timestamp - second.timestamp) * direction || first.index - second.index)
+    .forEach((entry) => {
+      const matchesYear = catalogYear.value === 'all' || entry.year === catalogYear.value
+      const matchesSearch = !query || entry.searchText.includes(query)
+      const visible = matchesYear && matchesSearch
+      const wasHidden = entry.element.hidden
+
+      catalogList.append(entry.element)
+      entry.element.hidden = !visible
+      if (visible) {
+        entry.element.style.setProperty('--delay', `${Math.min(visibleIndex * 60, 240)}ms`)
+        if (wasHidden) entry.element.classList.add('is-visible')
+        visibleIndex++
+      }
+    })
+
+  catalogStatus.textContent = `${visibleIndex} / ${catalogEntries.length} 场演讲`
+  catalogEmpty.hidden = visibleIndex > 0
+  catalogList.hidden = visibleIndex === 0
+}
+
+function resetCatalog() {
+  catalogSearch.value = ''
+  catalogYear.value = 'all'
+  catalogSort.value = 'desc'
+  applyCatalogFilters()
+  catalogSearch.focus({ preventScroll: true })
+}
+
+catalogSearch.addEventListener('input', applyCatalogFilters)
+catalogYear.addEventListener('change', applyCatalogFilters)
+catalogSort.addEventListener('change', applyCatalogFilters)
+document.querySelector('#talk-reset').addEventListener('click', resetCatalog)
+document.querySelector('#catalog-reset-empty').addEventListener('click', resetCatalog)
+applyCatalogFilters()
