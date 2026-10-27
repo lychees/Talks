@@ -129,14 +129,14 @@ h1 { margin: 0; font-size: clamp(64px, 8.8vw, 116px); font-weight: 780; line-hei
 .preview { position: relative; z-index: 1; order: -1; display: block; min-height: 0; overflow: hidden; border-bottom: 1px solid var(--line); background: #020304; text-decoration: none; }
 .preview:focus-visible { outline-offset: -5px; }
 .preview::before { content: ""; position: absolute; inset: 0 0 auto; z-index: 2; height: 2px; background: linear-gradient(90deg, transparent, rgb(var(--accent-rgb) / 75%), transparent); pointer-events: none; }
-.preview img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; min-height: 0; object-fit: contain; transition: transform 650ms cubic-bezier(.2, .7, .2, 1), opacity 300ms ease; }
-.preview img.preview-slide { transition-delay: 300ms; }
-.preview-alt { position: absolute; inset: 0; opacity: 0; transition: opacity 300ms ease; transition-delay: 0ms; }
-.preview.is-alt .preview-slide { opacity: 0; transition-delay: 0ms; }
-.preview.is-alt .preview-alt { opacity: 1; transition-delay: 300ms; }
+.preview img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: contain; transition: transform 650ms cubic-bezier(.2, .7, .2, 1), opacity 300ms ease; transition-delay: var(--preview-delay, 0ms); }
+.preview-slide { --preview-delay: 300ms; }
+.preview-alt { position: absolute; inset: 0; opacity: 0; }
+.preview.is-alt .preview-slide { --preview-delay: 0ms; opacity: 0; }
+.preview.is-alt .preview-alt { --preview-delay: 300ms; opacity: 1; }
 .preview::after { content: ""; position: absolute; top: -20%; bottom: -20%; left: -65%; width: 38%; background: linear-gradient(90deg, transparent, rgb(255 255 255 / 10%), transparent); transform: skewX(-18deg); transition: left 750ms ease; pointer-events: none; }
 .preview:hover:not(.is-alt) .preview-slide { opacity: .86; transform: scale(1.035); }
-.preview.is-alt:hover .preview-alt { opacity: 1; transform: scale(1.035); }
+.preview.is-alt:hover .preview-alt { transform: scale(1.035); }
 .preview:hover::after { left: 135%; }
 .preview-shade { position: absolute; inset: 0; background: linear-gradient(to top, rgb(0 0 0 / 30%), transparent 42%); pointer-events: none; }
 .preview-label { position: absolute; right: 16px; bottom: 16px; padding: 8px 12px; border: 1px solid rgb(255 255 255 / 17%); border-radius: 999px; color: #e2e8f0; background: rgb(0 0 0 / 65%); backdrop-filter: blur(12px); font-size: 11px; }
@@ -156,7 +156,6 @@ h1 { margin: 0; font-size: clamp(64px, 8.8vw, 116px); font-weight: 780; line-hei
 @keyframes marquee { to { transform: translateX(-50%); } }
 @media (max-width: 980px) {
   .hero { grid-template-columns: minmax(0, 1fr) auto; gap: 28px; padding-block: 56px 48px; }
-  .hero-visual { margin-top: 0; }
   .orbit { width: clamp(180px, 27vw, 260px); }
   .orbit-center strong { font-size: clamp(58px, 8vw, 76px); }
   .timeline { grid-template-columns: 1fr; }
@@ -180,7 +179,7 @@ h1 { margin: 0; font-size: clamp(64px, 8.8vw, 116px); font-weight: 780; line-hei
   .catalog-controls .button { justify-self: start; padding-inline: 14px; }
   .catalog-status { grid-column: auto; align-self: center; padding: 0 3px 0 0; }
   .timeline { gap: 20px; }
-  .talk { min-height: 0; border-radius: 18px; }
+  .talk { border-radius: 18px; }
   .talk-copy { padding: 22px; }
   .talk h2 { font-size: 25px; }
   .speaker { margin-bottom: 22px; }

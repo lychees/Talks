@@ -1,6 +1,9 @@
-const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
-const finePointer = window.matchMedia('(pointer: fine)')
-const progress = document.querySelector('.scroll-progress span')
+const $ = (selector, root = document) => root.querySelector(selector)
+const $$ = (selector, root = document) => [...root.querySelectorAll(selector)]
+const passive = { passive: true }
+const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)')
+const finePointer = matchMedia('(pointer: fine)')
+const progress = $('.scroll-progress span')
 let scrollFrame = 0
 
 function updateProgress() {
@@ -12,17 +15,17 @@ function updateProgress() {
 
 window.addEventListener('scroll', () => {
   if (!scrollFrame) scrollFrame = requestAnimationFrame(updateProgress)
-}, { passive: true })
-window.addEventListener('resize', updateProgress, { passive: true })
+}, passive)
+window.addEventListener('resize', updateProgress, passive)
 updateProgress()
 
-const revealElements = document.querySelectorAll('.reveal')
+const revealElements = $$('.reveal')
 if ('IntersectionObserver' in window && !reducedMotion.matches) {
   const observer = new IntersectionObserver((entries) => {
-    for (const entry of entries) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible')
-        observer.unobserve(entry.target)
+    for (const { target, isIntersecting } of entries) {
+      if (isIntersecting) {
+        target.classList.add('is-visible')
+        observer.unobserve(target)
       }
     }
   }, { threshold: 0.12, rootMargin: '0px 0px -40px' })
@@ -31,63 +34,43 @@ if ('IntersectionObserver' in window && !reducedMotion.matches) {
   revealElements.forEach(element => element.classList.add('is-visible'))
 }
 
-const counter = document.querySelector('[data-count]')
+const counter = $('[data-count]')
 if (counter && !reducedMotion.matches) {
   const target = Number(counter.dataset.count)
   const startedAt = performance.now()
-  const count = (now) => {
+  requestAnimationFrame(function count(now) {
     const ratio = Math.min(1, (now - startedAt) / 750)
-    counter.textContent = String(Math.round(target * (1 - (1 - ratio) ** 3)))
+    counter.textContent = Math.round(target * (1 - (1 - ratio) ** 3))
     if (ratio < 1) requestAnimationFrame(count)
-  }
-  requestAnimationFrame(count)
+  })
 }
 
 if (finePointer.matches && !reducedMotion.matches) {
-  document.querySelectorAll('.talk').forEach((card) => {
-    let frame = 0
-    card.addEventListener('pointermove', (event) => {
-      if (frame) return
-      frame = requestAnimationFrame(() => {
-        const rect = card.getBoundingClientRect()
-        const x = (event.clientX - rect.left) / rect.width
-        const y = (event.clientY - rect.top) / rect.height
-        card.style.setProperty('--pointer-x', `${x * 100}%`)
-        card.style.setProperty('--pointer-y', `${y * 100}%`)
-        card.style.setProperty('--rotate-x', `${(0.5 - y) * 2.2}deg`)
-        card.style.setProperty('--rotate-y', `${(x - 0.5) * 2.2}deg`)
-        frame = 0
-      })
+  $$('.talk').forEach((card) => {
+    card.addEventListener('pointermove', ({ clientX, clientY }) => {
+      const { left, top, width, height } = card.getBoundingClientRect()
+      const x = (clientX - left) / width
+      const y = (clientY - top) / height
+      card.style.setProperty('--pointer-x', `${x * 100}%`)
+      card.style.setProperty('--pointer-y', `${y * 100}%`)
+      card.style.setProperty('--rotate-x', `${(0.5 - y) * 2.2}deg`)
+      card.style.setProperty('--rotate-y', `${(x - 0.5) * 2.2}deg`)
     })
     card.addEventListener('pointerleave', () => {
-      if (frame) cancelAnimationFrame(frame)
-      frame = 0
-      card.style.setProperty('--rotate-x', '0deg')
-      card.style.setProperty('--rotate-y', '0deg')
+      for (const property of ['--rotate-x', '--rotate-y']) card.style.setProperty(property, '0deg')
     })
   })
 }
 
-const canvas = document.querySelector('#network')
+const canvas = $('#network')
 const context = canvas.getContext('2d')
+const colors = ['rgba(85, 217, 232, .36)', 'rgba(178, 157, 255, .3)', 'rgba(255, 184, 107, .26)']
 let width = 0
 let height = 0
 let nodes = []
 let animationFrame = 0
 let resizeFrame = 0
 let previousTime = 0
-
-function createNodes() {
-  const count = Math.min(40, Math.max(18, Math.floor(width * height / 52000)))
-  nodes = Array.from({ length: count }, (_, index) => ({
-    x: Math.random() * width,
-    y: Math.random() * height,
-    vx: (Math.random() - 0.5) * 0.07,
-    vy: (Math.random() - 0.5) * 0.07,
-    radius: index % 4 === 0 ? 1.8 : 1.15,
-    tint: index % 3,
-  }))
-}
 
 function draw(time = 0) {
   const delta = Math.min(40, time - previousTime || 16)
@@ -104,25 +87,24 @@ function draw(time = 0) {
     }
   }
   const maximumDistance = width < 640 ? 125 : 155
+  context.lineWidth = 0.7
   for (let first = 0; first < nodes.length; first++) {
     for (let second = first + 1; second < nodes.length; second++) {
       const dx = nodes[first].x - nodes[second].x
       const dy = nodes[first].y - nodes[second].y
       const distance = Math.hypot(dx, dy)
-      if (distance < maximumDistance) {
-        context.beginPath()
-        context.moveTo(nodes[first].x, nodes[first].y)
-        context.lineTo(nodes[second].x, nodes[second].y)
-        context.strokeStyle = `rgba(112, 167, 210, ${(1 - distance / maximumDistance) * 0.12})`
-        context.lineWidth = 0.7
-        context.stroke()
-      }
+      if (distance >= maximumDistance) continue
+      context.beginPath()
+      context.moveTo(nodes[first].x, nodes[first].y)
+      context.lineTo(nodes[second].x, nodes[second].y)
+      context.strokeStyle = `rgba(112, 167, 210, ${(1 - distance / maximumDistance) * 0.12})`
+      context.stroke()
     }
   }
   for (const node of nodes) {
     context.beginPath()
     context.arc(node.x, node.y, node.radius, 0, Math.PI * 2)
-    context.fillStyle = node.tint === 0 ? 'rgba(85, 217, 232, .36)' : node.tint === 1 ? 'rgba(178, 157, 255, .3)' : 'rgba(255, 184, 107, .26)'
+    context.fillStyle = colors[node.tint]
     context.fill()
   }
 }
@@ -139,7 +121,15 @@ function resize() {
   canvas.width = Math.round(width * ratio)
   canvas.height = Math.round(height * ratio)
   context.setTransform(ratio, 0, 0, ratio, 0, 0)
-  createNodes()
+  const count = Math.min(40, Math.max(18, Math.floor(width * height / 52000)))
+  nodes = Array.from({ length: count }, (_, index) => ({
+    x: Math.random() * width,
+    y: Math.random() * height,
+    vx: (Math.random() - 0.5) * 0.07,
+    vy: (Math.random() - 0.5) * 0.07,
+    radius: index % 4 === 0 ? 1.8 : 1.15,
+    tint: index % 3,
+  }))
   draw()
 }
 
@@ -152,51 +142,51 @@ function syncAnimation() {
 window.addEventListener('resize', () => {
   cancelAnimationFrame(resizeFrame)
   resizeFrame = requestAnimationFrame(resize)
-}, { passive: true })
+}, passive)
 document.addEventListener('visibilitychange', syncAnimation)
 reducedMotion.addEventListener('change', syncAnimation)
 resize()
 syncAnimation()
 
-const previewMedia = document.querySelectorAll('.preview')
-const touchPreview = window.matchMedia('(hover: none)')
-if (!reducedMotion.matches) {
-  previewMedia.forEach((preview) => {
-    let timer
-    const show = () => {
-      clearTimeout(timer)
-      timer = setTimeout(() => preview.classList.add('is-alt'), touchPreview.matches ? 1400 : 650)
-    }
-    const hide = () => {
-      clearTimeout(timer)
-      preview.classList.remove('is-alt')
-    }
-    preview.addEventListener('pointerenter', show)
-    preview.addEventListener('pointerleave', hide)
-    preview.addEventListener('focusin', show)
-    preview.addEventListener('focusout', hide)
-    reducedMotion.addEventListener('change', hide)
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver(([entry]) => {
-        if (!touchPreview.matches) return
-        if (entry.isIntersecting) show()
-        else hide()
-      }, { threshold: 0.65 })
-      observer.observe(preview)
-    }
-  })
+const previewMedia = $$('.preview')
+const touchPreview = matchMedia('(hover: none)')
+const previewTimers = new WeakMap()
+
+function togglePreview(preview, show) {
+  clearTimeout(previewTimers.get(preview))
+  const toggle = () => preview.classList.toggle('is-alt', show)
+  if (show) previewTimers.set(preview, setTimeout(toggle, touchPreview.matches ? 1400 : 650))
+  else toggle()
 }
 
-const catalogList = document.querySelector('.timeline')
-const catalogSearch = document.querySelector('#talk-search')
-const catalogYear = document.querySelector('#talk-year')
-const catalogSort = document.querySelector('#talk-sort')
-const catalogStatus = document.querySelector('#catalog-status')
-const catalogEmpty = document.querySelector('#catalog-empty')
-const catalogEntries = Array.from(catalogList.querySelectorAll('.talk'), (element, index) => {
-  const date = element.querySelector('.meta time').dateTime
-  const time = element.querySelector('.schedule time')?.dateTime
-  const searchText = Array.from(element.querySelectorAll('.meta, h2, .speaker'))
+if (!reducedMotion.matches) {
+  previewMedia.forEach((preview) => {
+    preview.addEventListener('pointerenter', () => togglePreview(preview, true))
+    preview.addEventListener('pointerleave', () => togglePreview(preview, false))
+    preview.addEventListener('focusin', () => togglePreview(preview, true))
+    preview.addEventListener('focusout', () => togglePreview(preview, false))
+  })
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      for (const { target, isIntersecting } of entries) {
+        if (!touchPreview.matches) continue
+        togglePreview(target, isIntersecting)
+      }
+    }, { threshold: 0.65 })
+    previewMedia.forEach(preview => observer.observe(preview))
+  }
+}
+reducedMotion.addEventListener('change', () => previewMedia.forEach(preview => togglePreview(preview, false)))
+
+const catalogList = $('.timeline')
+const catalogSearch = $('#talk-search')
+const catalogYear = $('#talk-year')
+const catalogSort = $('#talk-sort')
+const catalogStatus = $('#catalog-status')
+const catalogEmpty = $('#catalog-empty')
+const catalogEntries = $$('.talk', catalogList).map((element, index) => {
+  const date = $('.meta time', element).dateTime
+  const searchText = $$('.meta, h2, .speaker', element)
     .map(field => field.textContent.replace(/\s+/g, ' '))
     .join(' ')
     .toLocaleLowerCase('zh-CN')
@@ -204,7 +194,7 @@ const catalogEntries = Array.from(catalogList.querySelectorAll('.talk'), (elemen
     element,
     index,
     year: date.slice(0, 4),
-    timestamp: Date.parse(time || `${date}T00:00:00+08:00`),
+    timestamp: Date.parse($('.schedule time', element)?.dateTime || `${date}T00:00:00+08:00`),
     searchText,
   }
 })
@@ -212,28 +202,23 @@ const catalogEntries = Array.from(catalogList.querySelectorAll('.talk'), (elemen
 function applyCatalogFilters() {
   const query = catalogSearch.value.trim().toLocaleLowerCase('zh-CN')
   const direction = catalogSort.value === 'asc' ? 1 : -1
+  const entries = catalogEntries.slice()
+    .sort((first, second) => (first.timestamp - second.timestamp) * direction || first.index - second.index)
   let visibleIndex = 0
 
-  catalogEntries.slice()
-    .sort((first, second) => (first.timestamp - second.timestamp) * direction || first.index - second.index)
-    .forEach((entry) => {
-      const matchesYear = catalogYear.value === 'all' || entry.year === catalogYear.value
-      const matchesSearch = !query || entry.searchText.includes(query)
-      const visible = matchesYear && matchesSearch
-      const wasHidden = entry.element.hidden
-
-      catalogList.append(entry.element)
-      entry.element.hidden = !visible
-      if (visible) {
-        entry.element.style.setProperty('--delay', `${Math.min(visibleIndex * 60, 240)}ms`)
-        if (wasHidden) entry.element.classList.add('is-visible')
-        visibleIndex++
-      }
-    })
+  catalogList.append(...entries.map(entry => entry.element))
+  for (const { element, year, searchText } of entries) {
+    const visible = (catalogYear.value === 'all' || year === catalogYear.value) && searchText.includes(query)
+    if (element.hidden && visible) element.classList.add('is-visible')
+    element.hidden = !visible
+    if (!visible) continue
+    element.style.setProperty('--delay', `${Math.min(visibleIndex * 60, 240)}ms`)
+    visibleIndex++
+  }
 
   catalogStatus.textContent = `${visibleIndex} / ${catalogEntries.length} 场演讲`
   catalogEmpty.hidden = visibleIndex > 0
-  catalogList.hidden = visibleIndex === 0
+  catalogList.hidden = !visibleIndex
 }
 
 function resetCatalog() {
@@ -245,8 +230,6 @@ function resetCatalog() {
 }
 
 catalogSearch.addEventListener('input', applyCatalogFilters)
-catalogYear.addEventListener('change', applyCatalogFilters)
-catalogSort.addEventListener('change', applyCatalogFilters)
-document.querySelector('#talk-reset').addEventListener('click', resetCatalog)
-document.querySelector('#catalog-reset-empty').addEventListener('click', resetCatalog)
+for (const select of [catalogYear, catalogSort]) select.addEventListener('change', applyCatalogFilters)
+for (const button of $$('#talk-reset, #catalog-reset-empty')) button.addEventListener('click', resetCatalog)
 applyCatalogFilters()
