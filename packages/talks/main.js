@@ -157,3 +157,32 @@ document.addEventListener('visibilitychange', syncAnimation)
 reducedMotion.addEventListener('change', syncAnimation)
 resize()
 syncAnimation()
+
+const previewMedia = document.querySelectorAll('.preview')
+const touchPreview = window.matchMedia('(hover: none)')
+if (!reducedMotion.matches) {
+  previewMedia.forEach((preview) => {
+    let timer
+    const show = () => {
+      clearTimeout(timer)
+      timer = setTimeout(() => preview.classList.add('is-alt'), touchPreview.matches ? 1400 : 650)
+    }
+    const hide = () => {
+      clearTimeout(timer)
+      preview.classList.remove('is-alt')
+    }
+    preview.addEventListener('pointerenter', show)
+    preview.addEventListener('pointerleave', hide)
+    preview.addEventListener('focusin', show)
+    preview.addEventListener('focusout', hide)
+    reducedMotion.addEventListener('change', hide)
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(([entry]) => {
+        if (!touchPreview.matches) return
+        if (entry.isIntersecting) show()
+        else hide()
+      }, { threshold: 0.65 })
+      observer.observe(preview)
+    }
+  })
+}
