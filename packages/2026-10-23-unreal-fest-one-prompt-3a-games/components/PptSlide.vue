@@ -6,12 +6,13 @@ const props = defineProps<{
   video?: boolean
   videoClass?: string
   showVideoLink?: boolean
+  directory?: string
 }>()
 
 const videoElement = ref<HTMLVideoElement>()
 const number = computed(() => String(props.page).padStart(3, '0'))
 const base = import.meta.env.BASE_URL || '/'
-const imageUrl = computed(() => `${base}slides/slide-${number.value}.webp`)
+const imageUrl = computed(() => `${base}${props.directory ?? 'slides'}/slide-${number.value}.webp`)
 const videoUrl = computed(() => `${base}media/slide-${number.value}.mp4`)
 let observer: IntersectionObserver | undefined
 

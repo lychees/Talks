@@ -24,6 +24,12 @@
 | 2017.08.09 · 录像发布；活动日期待确认 | Taipei Ethereum Meetup #2017-6 | **算力套汇的可行性研究**<br>唐飞虎 | [YouTube 指定片段](https://youtu.be/-iXqJhSdVp0?t=6201) · [B 站第 3 部分](https://www.bilibili.com/video/av13132046/#page=3) · [活动频道](https://www.youtube.com/@taipeieth) · [原始收录](https://www.shuizilong.com/house/about-me)（未提供 Slide） |
 | 2015.02.05 · 录像发布；活动日期待确认 | 2048 Survivor · 游戏演示 | **2048 Survivor：玩法介绍与演示**<br>唐飞虎 | [B 站演示与问答](https://www.bilibili.com/video/BV1Vx411A7S8/) · [项目仓库](https://github.com/lychees/2048-Survivor) · [原始收录](https://www.shuizilong.com/house/about-me)（未提供 Slide） |
 
+## 衍生版本
+
+**48h 制作 3A，哪些部分是真的？热门案例复刻经验分享**：去除 Unreal Fest 活动品牌，采用 48h 主题深色版式，保留 77 页内容、案例和 8 段演示视频。
+
+[在线阅读](https://lychees.github.io/Talks/48h-3a-game-replication/) · [Slidev 源文件](packages/2026-10-23-unreal-fest-one-prompt-3a-games/48h.md) · [原始 PPTX](https://github.com/lychees/Talks/blob/main/slides/48h-3a-game-replication.pptx)
+
 ## 本地运行
 
 需要 Node.js 24 和 pnpm。

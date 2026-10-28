@@ -6,6 +6,7 @@
     "dev": "slidev --open --remote",
     "build": "slidev build",
     "build-base": "slidev build --out ../../dist/2026-10-23-unreal-fest-one-prompt-3a-games --base /Talks/2026-10-23-unreal-fest-one-prompt-3a-games/",
+    "build-48h": "slidev build 48h.md --out ../../dist/48h-3a-game-replication --base /Talks/48h-3a-game-replication/",
     "export": "slidev export --output unreal-fest-2026.pdf"
   }
 }
