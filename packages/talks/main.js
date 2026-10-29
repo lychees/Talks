@@ -244,8 +244,6 @@ function buildCatalogTable() {
     const eventCell = document.createElement('td')
     eventCell.className = 'table-event'
     eventCell.textContent = meta.textContent.replace(/\s+/g, ' ').trim()
-    const official = $$('.related a', card).find(link => /官网|详情|日程/.test(link.textContent))
-    if (official) eventCell.append(document.createElement('br'), catalogLink(official, '活动详情 ↗', title, 'table-event-link'))
 
     const actionsCell = document.createElement('td')
     actionsCell.className = 'table-actions'
@@ -254,9 +252,16 @@ function buildCatalogTable() {
     }
     if (!actionsCell.children.length) actionsCell.textContent = '—'
 
+    const relatedCell = document.createElement('td')
+    relatedCell.className = 'table-related'
+    for (const link of $$('.related a', card)) {
+      relatedCell.append(catalogLink(link, link.textContent.replace(/\s+/g, ' ').trim(), title, 'table-related-link'))
+    }
+    if (!relatedCell.children.length) relatedCell.textContent = '—'
+
     const row = document.createElement('tr')
     row.className = 'catalog-row'
-    row.append(dateCell, titleCell, eventCell, actionsCell)
+    row.append(dateCell, titleCell, eventCell, actionsCell, relatedCell)
     entry.row = row
     catalogTableBody.append(row)
   }
