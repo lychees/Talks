@@ -74,6 +74,10 @@
           <h2 id="talks-heading">演讲库</h2>
         </div>
         <p>按时间整理 · 时段均为 UTC+8</p>
+        <div class="view-switch" role="group" aria-label="视图模式">
+          <button class="view-button" id="card-view" type="button" aria-pressed="true" aria-controls="talk-list">卡片</button>
+          <button class="view-button" id="table-view" type="button" aria-pressed="false" aria-controls="catalog-table">表格</button>
+        </div>
       </div>
 
       <div class="catalog-controls" role="search" aria-label="筛选演讲">
@@ -107,6 +111,22 @@
       <div class="catalog-empty" id="catalog-empty" hidden>
         <p>没有找到匹配的演讲。</p>
         <button class="button ghost" id="catalog-reset-empty" type="button">重置筛选</button>
+      </div>
+
+      <div class="catalog-table-wrap" id="catalog-table-wrap" hidden>
+        <p class="table-hint" aria-hidden="true">左右滑动查看完整表格</p>
+        <table id="catalog-table">
+          <caption class="sr-only">演讲列表</caption>
+          <thead>
+            <tr>
+              <th scope="col">日期</th>
+              <th scope="col">演讲</th>
+              <th scope="col">活动</th>
+              <th scope="col">资料</th>
+            </tr>
+          </thead>
+          <tbody id="catalog-table-body"></tbody>
+        </table>
       </div>
 
       <div class="timeline" id="talk-list">

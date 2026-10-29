@@ -55,6 +55,8 @@ pnpm build-base
 
 GitHub Pages 首页：<https://lychees.github.io/Talks/>。推送到 `main` 后由 GitHub Actions 自动部署。
 
+首页支持卡片与表格两种视图，均可搜索、按年份筛选和按日期排序；视图选择会保存在本地。
+
 幻灯片位于 `packages/2026-10-23-unreal-fest-one-prompt-3a-games/`。页面图像保留了原始 PowerPoint 的版式，8 段嵌入演示视频可在对应页面直接播放；完整演讲录像见 [B 站](https://www.bilibili.com/video/BV1xtnY6REby/)。
 
 原始 PowerPoint 位于 `slides/`，使用 Git LFS 保存，可[下载原文件](https://github.com/lychees/Talks/blob/main/slides/%E7%9C%A9%E6%99%95%E7%98%AB%E5%9D%90%EF%BC%9F%E4%B8%80%E5%8F%A5%E8%AF%9D%E7%94%9F%E6%88%90_3A_%E6%B8%B8%E6%88%8F_%E5%93%AA%E4%BA%9B%E6%98%AF%E7%9C%9F%E7%9A%84%E5%93%AA%E4%BA%9B%E6%98%AF%E5%81%87%E7%9A%84.pptx)。克隆后如需获取 LFS 文件，请运行 `git lfs pull`。

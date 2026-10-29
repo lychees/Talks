@@ -184,6 +184,9 @@ const catalogYear = $('#talk-year')
 const catalogSort = $('#talk-sort')
 const catalogStatus = $('#catalog-status')
 const catalogEmpty = $('#catalog-empty')
+const catalogTableWrap = $('#catalog-table-wrap')
+const catalogTableBody = $('#catalog-table-body')
+const catalogViewButtons = { cards: $('#card-view'), table: $('#table-view') }
 const catalogEntries = $$('.talk', catalogList).map((element, index) => {
   const date = $('.meta time', element).dateTime
   const searchText = $$('.meta, h2, .speaker', element)
@@ -199,6 +202,84 @@ const catalogEntries = $$('.talk', catalogList).map((element, index) => {
   }
 })
 
+function catalogLink(source, label, title, className = 'table-action') {
+  const link = source.cloneNode(true)
+  link.className = className
+  link.textContent = label
+  link.setAttribute('aria-label', `${title} · ${label}`)
+  return link
+}
+
+function actionLabel(link) {
+  const text = link.textContent.replace(/\s+/g, ' ').trim()
+  if (text.includes('原始 PPT')) return 'PPT'
+  if (text.includes('圆桌')) return '圆桌'
+  if (/bilibili\.com|youtu\.be|youtube\.com/.test(link.href)) return '录像'
+  return text
+}
+
+function buildCatalogTable() {
+  for (const entry of catalogEntries) {
+    const card = entry.element
+    const title = $('h2', card).innerText.replace(/\s+/g, ' ').trim()
+    const primary = $('.actions .primary', card)
+    const meta = $('.meta', card).cloneNode(true)
+    $('time', meta).remove()
+    $('.meta-separator', meta)?.remove()
+
+    const dateCell = document.createElement('td')
+    dateCell.className = 'table-date'
+    dateCell.append($('.meta time', card).cloneNode(true))
+    const schedule = document.createElement('small')
+    schedule.textContent = $('.schedule', card).textContent.replace(/\s+/g, ' ').trim()
+    dateCell.append(schedule)
+
+    const titleCell = document.createElement('td')
+    titleCell.className = 'table-title'
+    titleCell.append(catalogLink(primary, title, title, 'table-title-link'))
+    const speaker = document.createElement('small')
+    speaker.textContent = $('.speaker strong', card).textContent.trim()
+    titleCell.append(speaker)
+
+    const eventCell = document.createElement('td')
+    eventCell.className = 'table-event'
+    eventCell.textContent = meta.textContent.replace(/\s+/g, ' ').trim()
+    const official = $$('.related a', card).find(link => /官网|详情|日程/.test(link.textContent))
+    if (official) eventCell.append(document.createElement('br'), catalogLink(official, '活动详情 ↗', title, 'table-event-link'))
+
+    const actionsCell = document.createElement('td')
+    actionsCell.className = 'table-actions'
+    for (const link of $$('.actions a', card).filter(link => link !== primary)) {
+      actionsCell.append(catalogLink(link, actionLabel(link), title))
+    }
+    if (!actionsCell.children.length) actionsCell.textContent = '—'
+
+    const row = document.createElement('tr')
+    row.className = 'catalog-row'
+    row.append(dateCell, titleCell, eventCell, actionsCell)
+    entry.row = row
+    catalogTableBody.append(row)
+  }
+}
+
+let catalogView = 'cards'
+try { catalogView = localStorage.getItem('talks-view') === 'table' ? 'table' : 'cards' } catch {}
+
+function syncCatalogView(count) {
+  document.body.dataset.view = catalogView
+  catalogList.hidden = catalogView === 'table' || count === 0
+  catalogTableWrap.hidden = catalogView === 'cards' || count === 0
+  for (const [view, button] of Object.entries(catalogViewButtons)) {
+    button.setAttribute('aria-pressed', String(view === catalogView))
+  }
+}
+
+function setCatalogView(view) {
+  catalogView = view
+  syncCatalogView(catalogEntries.filter(entry => !entry.element.hidden).length)
+  try { localStorage.setItem('talks-view', view) } catch {}
+}
+
 function applyCatalogFilters() {
   const query = catalogSearch.value.trim().toLocaleLowerCase('zh-CN')
   const direction = catalogSort.value === 'asc' ? 1 : -1
@@ -207,10 +288,12 @@ function applyCatalogFilters() {
   let visibleIndex = 0
 
   catalogList.append(...entries.map(entry => entry.element))
-  for (const { element, year, searchText } of entries) {
+  catalogTableBody.append(...entries.map(entry => entry.row))
+  for (const { element, year, searchText, row } of entries) {
     const visible = (catalogYear.value === 'all' || year === catalogYear.value) && searchText.includes(query)
     if (element.hidden && visible) element.classList.add('is-visible')
     element.hidden = !visible
+    row.hidden = !visible
     if (!visible) continue
     element.style.setProperty('--delay', `${Math.min(visibleIndex * 60, 240)}ms`)
     visibleIndex++
@@ -218,7 +301,7 @@ function applyCatalogFilters() {
 
   catalogStatus.textContent = `${visibleIndex} / ${catalogEntries.length} 场演讲`
   catalogEmpty.hidden = visibleIndex > 0
-  catalogList.hidden = !visibleIndex
+  syncCatalogView(visibleIndex)
 }
 
 function resetCatalog() {
@@ -229,6 +312,9 @@ function resetCatalog() {
   catalogSearch.focus({ preventScroll: true })
 }
 
+buildCatalogTable()
+catalogViewButtons.cards.addEventListener('click', () => setCatalogView('cards'))
+catalogViewButtons.table.addEventListener('click', () => setCatalogView('table'))
 catalogSearch.addEventListener('input', applyCatalogFilters)
 for (const select of [catalogYear, catalogSort]) select.addEventListener('change', applyCatalogFilters)
 for (const button of $$('#talk-reset, #catalog-reset-empty')) button.addEventListener('click', resetCatalog)
